@@ -1,2 +1,14 @@
 # php7-laravel
-Optimized Docker PHP7 Image for Laravel 5
+
+**This is an unofficial repository for a Laravel 5 optimized PHP7-FPM Docker container** 
+
+*(it's based on Laravel Settler - see https://github.com/laravel/settler/blob/master/scripts/provision.sh)*
+
+For more information see the Dockerfile.
+
+# Docker Hub Automated build
+
+ndum/php7-laravel is available as a Docker Hub Trusted Build.
+
+# License
+php7-laravel is a MIT-licensed open source project.
