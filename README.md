@@ -1,6 +1,6 @@
 # php7-laravel
 
-**This is an unofficial repository for a Laravel 5 optimized PHP7-FPM Docker container** 
+**This is an unofficial repository for a Laravel 5 optimized php7 Docker Container** 
 
 *(it's based on Laravel Settler - see https://github.com/laravel/settler/blob/master/scripts/provision.sh)*
 
