@@ -1,0 +1,14 @@
+before_script:
+  - bash .gitlab-ci.sh
+
+variables:
+  MYSQL_DATABASE: testing
+  MYSQL_ROOT_PASSWORD: secret
+
+phpunit:ndum/php7-laravel:mysql5.7:
+  image: ndum/php7-laravel
+  services:
+    - mysql:5.7
+  script:
+    - echo "Running PHPUnit Tests"
+    - php vendor/bin/phpunit --colors --debug  --coverage-text
