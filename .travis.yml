@@ -1,0 +1,10 @@
+language: python
+python:
+  - 3.2
+services:
+  - docker
+install:
+  - docker build -t ndum/php7-laravel .
+  - docker run -d -p 127.0.0.1:80:80 --name ndum/php7-laravel ndum/php7-laravel
+script:
+  - docker ps | grep -q ndum/php7-laravel
