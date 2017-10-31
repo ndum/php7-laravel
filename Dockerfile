@@ -73,9 +73,10 @@ RUN apt-get update && apt-get install -y \
   libmagickwand-dev --no-install-recommends
 RUN pecl install imagick && docker-php-ext-enable imagick
 
+# Removed xDebug temporally, non source version is incompatible with PHP 7.2-RC
 # Compile and install xDebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug 
+# RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug 
 
 # Deploy improved php.ini
 COPY conf/php.ini /usr/local/etc/php/php.ini
