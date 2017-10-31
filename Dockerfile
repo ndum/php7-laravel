@@ -33,7 +33,6 @@ RUN apt-get update && \
 		libedit-dev \
 		libedit2 \
 		gcc \
-		libmcrypt4 \
 		make \
 		python2.7-dev \
 		python-pip \
@@ -48,9 +47,7 @@ RUN apt-get update && \
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos --with-imap
 RUN docker-php-ext-install mbstring \
-   mcrypt \
    pdo_mysql \
-   curl \
    json \
    intl \
    gd \
