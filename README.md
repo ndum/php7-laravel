@@ -1,6 +1,6 @@
 # php7-laravel
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/ndum/php7-laravel)
+[![Build Status](https://travis-ci.org/ndum/php7-laravel.svg)](https://travis-ci.org/ndum/php7-laravel)
 
 **This is an unofficial Repository for a Laravel 5 optimized PHP-7 Docker Container** 
 
