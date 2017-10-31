@@ -1,5 +1,5 @@
-FROM php:7.1-fpm
-MAINTAINER Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>
+FROM php:7.2-rc-fpm
+LABEL authors="Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>"
 
 # Install all required packages.
 RUN apt-get update && \
