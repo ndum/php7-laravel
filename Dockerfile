@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 LABEL authors="Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>"
 
 # Install all required packages.
@@ -33,7 +33,6 @@ RUN apt-get update && \
 		libedit-dev \
 		libedit2 \
 		gcc \
-		libmcrypt4 \
 		make \
 		python2.7-dev \
 		python-pip \
@@ -48,9 +47,7 @@ RUN apt-get update && \
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos --with-imap
 RUN docker-php-ext-install mbstring \
-   mcrypt \
    pdo_mysql \
-   curl \
    json \
    intl \
    gd \
@@ -76,9 +73,10 @@ RUN apt-get update && apt-get install -y \
   libmagickwand-dev --no-install-recommends
 RUN pecl install imagick && docker-php-ext-enable imagick
 
+# Removed xDebug temporally, non source version is incompatible with PHP 7.2-RC
 # Compile and install xDebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug 
+# RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug 
 
 # Deploy improved php.ini
 COPY conf/php.ini /usr/local/etc/php/php.ini
