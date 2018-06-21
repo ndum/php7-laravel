@@ -1,6 +1,8 @@
 FROM php:7.2-fpm
 LABEL authors="Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>"
 
+ENV TMPDIR=/tmp
+
 # Install all required packages.
 RUN apt-get update && \
   apt-get install \
@@ -73,10 +75,46 @@ RUN apt-get update && apt-get install -y \
   libmagickwand-dev --no-install-recommends
 RUN pecl install imagick && docker-php-ext-enable imagick
 
-# Removed xDebug temporally, non source version is incompatible with PHP 7.2-RC
 # Compile and install xDebug
-# RUN pecl install xdebug \
-#    && docker-php-ext-enable xdebug 
+RUN pecl install xdebug \
+	&& docker-php-ext-enable xdebug 
+
+RUN apt-get update && apt-get install xvfb libgtkextra-dev libnss3 libgconf-2-4 wget gnupg2 -yqq
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+RUN apt-get update && apt-get install google-chrome-stable -yqq
+
+# Composer
+ENV COMPOSER_HOME /usr/local/share/composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV PATH "$COMPOSER_HOME:$COMPOSER_HOME/vendor/bin:$PATH"
+RUN \
+  mkdir -pv $COMPOSER_HOME && chmod -R g+w $COMPOSER_HOME \
+  && curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
+  && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
+  && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) \
+    !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
+    echo 'Invalid installer' . PHP_EOL; exit(1); }" \
+  && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME 
+
+# Yarn & Node
+RUN apt-get update && apt-get install -yq apt-transport-https
+RUN apt-get update && apt-get install -yq  python-software-properties
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -yq nodejs
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -yq yarn
+
+# phpunit
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+
+# Clean system up
+RUN apt-get -yq upgrade
+RUN apt-get -yq autoremove
+RUN apt-get -yq clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Deploy improved php.ini
 COPY conf/php.ini /usr/local/etc/php/php.ini
