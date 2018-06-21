@@ -99,7 +99,7 @@ RUN \
 
 # Yarn & Node
 RUN apt-get update && apt-get install -yq apt-transport-https
-RUN apt-get update && apt-get install -yq  python-software-properties
+RUN apt-get update && apt-get install -yq  software-properties-common
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -yq nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
