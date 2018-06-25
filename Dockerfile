@@ -43,12 +43,17 @@ RUN apt-get update && \
 		sqlite3 \
 		libmemcached-dev \
 		libc-client-dev -yqq \
+		postgresql-client \
+		mysql-client \
 	&& rm -rf /var/lib/apt/lists/* 
  
 # Compile PHP, include these extensions.
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ 
 RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos --with-imap
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install mbstring \
+   pdo \
+   pdo_pgsql \
    pdo_mysql \
    json \
    intl \
