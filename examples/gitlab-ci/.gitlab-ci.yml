@@ -1,14 +1,57 @@
-before_script:
-  - bash .gitlab-ci.sh
+stages:
+  - build
+  - test
 
 variables:
-  MYSQL_DATABASE: testing
+  MYSQL_DATABASE: homestead
   MYSQL_ROOT_PASSWORD: secret
 
-phpunit:ndum/php7-laravel:mysql5.7:
-  image: ndum/php7-laravel
+build:
+  stage: build
+  services:
+     - mysql:5.7
+
+  image: ndum/php7-laravel:dusk
+  script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - yarn
+    - yarn run dev
+  cache:
+      key: ${CI_BUILD_REF_NAME}
+      paths:
+        - vendor
+        - node_modules
+        - public
+        - resources
+
+test:
+  stage: test
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - vendor
+      - node_modules
   services:
     - mysql:5.7
+
+  image: ndum/php7-laravel:dusk
   script:
-    - echo "Running PHPUnit Tests"
-    - php vendor/bin/phpunit --colors --debug  --coverage-text
+    - cp .env.dusk.testing .env
+    - php artisan key:generate
+    - php artisan migrate
+    - php artisan passport:install
+    - php artisan db:seed
+    - php artisan dusk:update
+    - php vendor/bin/phpunit -v --coverage-text --colors --stderr
+    - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+    - php artisan serve &
+    - sleep 5
+    - php artisan dusk
+
+  artifacts:
+    paths:
+      - ./storage/logs
+      - ./tests/Browser/screenshots
+      - ./tests/Browser/console
+    expire_in: 7 days
+    when: always
