@@ -1,4 +1,4 @@
-FROM php:7-fpm
+FROM php:7.2-fpm
 LABEL authors="Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>"
 
 ENV TMPDIR=/tmp
