@@ -10,11 +10,11 @@ This Docker Container can be used for many Continous Integration (CI) enviroment
 Examples can be found under /examples. For more information see the Dockerfile.
 
 # Laravel Dusk:
-Laravel Dusk is tested with Gitlab-CI 11.0 and Laravel 5.6. Please use https://github.com/staudenmeir/dusk-updater for the newest Chromedriver
+Laravel Dusk is tested with Gitlab-CI 11.6.x and Laravel 5.7. Please use https://github.com/staudenmeir/dusk-updater for the newest Chromedriver
 
 # Built with:
 * Yarn / NPM
-* PHP 7.2 with xDebug
+* PHP 7.3 with Xdebug
 * MySQL / PostgreSQL and SQLite
 * PHPUnit
 * Google Chrome
