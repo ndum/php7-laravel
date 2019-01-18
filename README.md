@@ -14,7 +14,7 @@ Laravel Dusk is tested with Gitlab-CI 11.6.x and Laravel 5.7. Please use https:/
 
 # Built with:
 * Yarn / NPM
-* PHP 7.3 with Xdebug
+* PHP 7.3
 * MySQL / PostgreSQL and SQLite
 * PHPUnit
 * Google Chrome
