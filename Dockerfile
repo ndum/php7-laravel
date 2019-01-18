@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 LABEL authors="Nicolas D. <nd@nidum.org> / Simon Baerlocher <s.baerlocher@sbaerlocher.ch>"
 
 ENV TMPDIR=/tmp
@@ -15,6 +15,7 @@ RUN apt-get update && \
 		libvpx-dev \
 		libjpeg-dev \
 		libpng-dev \
+		libzip-dev \
 		libxpm-dev \
 		zlib1g-dev \
 		libfreetype6-dev \
