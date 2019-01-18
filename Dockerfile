@@ -80,8 +80,8 @@ RUN apt-get update && apt-get install -y \
 RUN pecl install imagick && docker-php-ext-enable imagick
 
 # Compile and install xDebug
-RUN pecl install xdebug-beta \
-	&& docker-php-ext-enable xdebug 
+#RUN pecl install xdebug-beta \
+#	&& docker-php-ext-enable xdebug 
 
 RUN apt-get update && apt-get install xvfb libgtkextra-dev libnss3 libgconf-2-4 wget gnupg2 -yqq
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
