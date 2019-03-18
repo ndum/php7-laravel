@@ -73,6 +73,10 @@ RUN docker-php-ext-install mbstring \
 RUN pecl install apcu \
     && docker-php-ext-enable apcu
 
+# pcntl for Laravel Horizon
+RUN docker-php-ext-install pcntl \
+    && docker-php-ext-enable pcntl
+
 #install Imagemagick & PHP Imagick ext
 RUN apt-get update && apt-get install -y \
   libmagickwand-dev --no-install-recommends
