@@ -48,7 +48,7 @@ RUN apt-get update && \
  
 # Compile PHP, include these extensions.
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ 
-RUN docker-php-ext-configure imap --with-imap-ssl --with-kerberos --with-imap
+RUN PHP_OPENSSL=yes docker-php-ext-configure imap --with-imap-ssl --with-kerberos --with-imap
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install mbstring \
    pdo \
