@@ -54,6 +54,9 @@ RUN docker-php-ext-install mbstring \
    pdo \
    pdo_pgsql \
    pdo_mysql \
+   pdo_sqlite\
+   mysqli \
+   pgsql \
    json \
    intl \
    gd \
@@ -61,14 +64,12 @@ RUN docker-php-ext-install mbstring \
    zip \
    bz2 \
    opcache \
-   pgsql \
-   pdo_sqlite\
    intl \
    bcmath \
    soap \
    ldap \
    imap \
-   readline
+   tokenizer
 
 # Compile and install APCu
 RUN pecl install apcu \
