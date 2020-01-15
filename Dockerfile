@@ -44,6 +44,7 @@ RUN apt-get update && \
 		sqlite3 \
 		libmemcached-dev \
 		libc-client-dev -yqq \
+		libonig-dev \
 	&& rm -rf /var/lib/apt/lists/* 
  
 # Compile PHP, include these extensions.
