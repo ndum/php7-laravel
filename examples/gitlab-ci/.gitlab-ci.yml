@@ -34,7 +34,7 @@ test:
   services:
     - mysql:5.7
 
-  image: ndum/php7-laravel:dusk
+  image: ndum/php7-laravel
   script:
     - cp .env.dusk.testing .env
     - php artisan key:generate

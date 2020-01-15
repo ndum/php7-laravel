@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ndum/php7-laravel.svg)](https://travis-ci.org/ndum/php7-laravel)
 
-**This is an inofficial repository for Laravel 6/5 optimized PHP7 Docker images**
+**This is an inofficial repository for Laravel 6/5 optimized PHP 7.x Docker images**
 
 *(it's based on Laravel Settler - see https://github.com/laravel/settler/blob/master/scripts/provision.sh)*
 
@@ -14,7 +14,7 @@ Laravel Dusk is tested with this images from Laravel 5.4 to Laravel 6.x Please u
 
 # Built with:
 * Yarn / NPM
-* PHP 7.2 - PHP7.4 (see https://cloud.docker.com/repository/docker/ndum/php7-laravel/tags)
+* PHP 7.2 - PHP 7.4 (see https://cloud.docker.com/repository/docker/ndum/php7-laravel/tags)
 * MySQL / PostgreSQL and SQLite
 * PHPUnit
 * Google Chrome
