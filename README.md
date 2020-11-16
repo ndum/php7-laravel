@@ -10,7 +10,7 @@ This Docker images can be used for many different Continous Integration (CI) env
 But it is mainly made for the wonderful GitLab-CI. Examples can be found under /examples. For more information see the Dockerfile.
 
 # Laravel Dusk:
-Laravel Dusk is tested with this images from Laravel 5.4 to Laravel 7.x Please use https://github.com/staudenmeir/dusk-updater for the newest Chromedriver if necessary.
+Laravel Dusk is tested with this images from Laravel 5.4 to Laravel 8.x Please use https://github.com/staudenmeir/dusk-updater for the newest Chromedriver if necessary.
 
 # Built with:
 * Yarn / NPM
