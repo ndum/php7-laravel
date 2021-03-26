@@ -1,7 +1,7 @@
 # php7-laravel
 
-**Successor
-This repo will soon be replaced by a successor (with GitHub Actions & PHP8 support) and will be read-only. Stay tuned!
+## Successor soon
+This repo will soon be replaced by a successor (with GitHub Actions & PHP8 support) and will be set to read-only. Stay tuned!
 
 **Laravel optimized PHP 7.x Docker images for CI-Enviroments**
 
