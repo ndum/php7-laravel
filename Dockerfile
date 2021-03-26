@@ -53,9 +53,6 @@ RUN PHP_OPENSSL=yes docker-php-ext-configure imap --with-imap-ssl --with-kerbero
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install mbstring \
    pdo \
-   pdo_pgsql \
-   pdo_mysql \
-   pdo_sqlite\
    mysqli \
    pgsql \
    json \
