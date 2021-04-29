@@ -1,6 +1,12 @@
 # php7-laravel
 
-This repo will soon be replaced by a successor (with GitHub Actions & PHP8 support) and will be set to read-only. Stay tuned!
+<p align="center">
+<strong>:warning: Hi! This repository has been replaced with a successor.</strong>
+</br>
+<h3 align="center">
+ 🎉 Check it out: <a href="https://github.com/ndum/laravel-ci" target="_blank" title="laravel-ci GitHub Repository">laravel-ci</a> 🎉
+</h3>
+</p>
 
 ## Laravel optimized PHP 7.x Docker images for CI-Enviroments
 
